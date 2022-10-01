@@ -43,7 +43,7 @@ public class NotuiComp : VvvvComponent
     {
         FileSystemTasks.CopyDirectoryRecursively(
             Sln.GetProject("Notui").Path.Parent / "bin" / build.Configuration,
-            build.VvvvPath / "packs" / "md.core",
+            build.VvvvPath / "lib" / "core",
             DirectoryExistsPolicy.Merge,
             FileExistsPolicy.Overwrite
         );

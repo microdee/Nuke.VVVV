@@ -43,7 +43,7 @@ public class MdStdlComp : VvvvComponent
     {
         FileSystemTasks.CopyDirectoryRecursively(
             Sln.GetProject("md.stdl").Path.Parent / "bin" / build.Configuration,
-            build.VvvvPath / "packs" / "md.core",
+            build.VvvvPath / "lib" / "core",
             DirectoryExistsPolicy.Merge,
             FileExistsPolicy.Overwrite
         );
