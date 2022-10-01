@@ -1,0 +1,31 @@
+[submodule "src/mp.essentials"]
+	path = src/mp.essentials
+	url = https://github.com/microdee/mp.essentials.git
+[submodule "src/mp.dx"]
+	path = src/mp.dx
+	url = https://github.com/microdee/mp.dx.git
+[submodule "src/dx11"]
+	path = src/dx11
+	url = https://github.com/microdee/dx11-vvvv.git
+	branch = feature/dotnet-4.8
+[submodule "src/md.stdl"]
+	path = src/md.stdl
+	url = https://github.com/microdee/md.stdl.git
+[submodule "src/mp.pddn"]
+	path = src/mp.pddn
+	url = https://github.com/microdee/mp.pddn.git
+[submodule "src/vvvv_sdk"]
+	path = src/vvvv_sdk
+	url = https://github.com/vvvv/vvvv-sdk.git
+[submodule "src/Notui"]
+	path = src/Notui
+	url = https://github.com/microdee/Notui.git
+[submodule "src/Notuiv"]
+	path = src/Notuiv
+	url = https://github.com/microdee/Notuiv.git
+[submodule "src/mp.vaudio"]
+	path = src/mp.vaudio
+	url = https://github.com/microdee/mp.vaudio.git
+[submodule "src/mp.fxh"]
+	path = src/mp.fxh
+	url = https://github.com/microdee/mp.fxh.git
