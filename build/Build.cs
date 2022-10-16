@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.IO;
+using System.Diagnostics;
 using Nuke.Common;
 using Nuke.Common.CI;
 using Nuke.Common.Execution;
@@ -31,6 +32,9 @@ public class Build : NukeBuild
 
     [Parameter]
     public readonly VvvvComponentEnum[] Component = VvvvComponentEnum.All.ToArray();
+
+    [Parameter]
+    public readonly AbsolutePath Patch;
     
     public AbsolutePath VvvvPath => RootDirectory / "vvvv";
 
@@ -103,6 +107,17 @@ public class Build : NukeBuild
                 Log.Information("Installing {0}", c);
                 c.Component.Install(this);
             });
+        });
+
+    Target VVVV => _ => _
+        .Before(Init)
+        .Executes(() =>
+        {
+            Tool vvvv = ToolResolver.GetLocalTool(RootDirectory / "vvvv" / "vvvv.exe");
+            vvvv(
+                arguments: Patch != null ? $"/o \"{Patch}\"" : "",
+                workingDirectory: Patch?.Parent ?? RootDirectory / "vvvv"
+            );
         });
 
     public static void CreateSymlinkOrCopy(AbsolutePath createAt, AbsolutePath from)

@@ -44,7 +44,7 @@ public class MpVAudioComp : VvvvComponent
     {
         Build.CreateSymlinkOrCopy(
             build.VvvvPath / "packs" / "mp.vaudio",
-            Build.RootDirectory / "src" / "mp.vaudio"
+            Build.RootDirectory / "src" / "mp.vaudio" / "output"
         );
     }
 }

@@ -10,17 +10,17 @@ using System.Reflection;
 using System.Collections;
 
 [TypeConverter(typeof(TypeConverter<VvvvComponentEnum>))]
-public class VvvvComponentEnum : Enumeration
+public abstract class VvvvComponentEnum : Enumeration
 {
-    public static readonly VvvvComponentEnum DX11 = new() { Value = nameof(DX11), Component = new DX11Comp() };
-    public static readonly VvvvComponentEnum MdStdl = new() { Value = nameof(MdStdl), Component = new MdStdlComp() };
-    public static readonly VvvvComponentEnum MpDX = new() { Value = nameof(MpDX), Component = new MpDXComp() };
-    public static readonly VvvvComponentEnum MpEssentials = new() { Value = nameof(MpEssentials), Component = new MpEssentialsComp() };
-    public static readonly VvvvComponentEnum MpFxh = new() { Value = nameof(MpFxh), Component = new MpFxhComp() };
-    public static readonly VvvvComponentEnum MpPddn = new() { Value = nameof(MpPddn), Component = new MpPddnComp() };
-    public static readonly VvvvComponentEnum MpVAudio = new() { Value = nameof(MpVAudio), Component = new MpVAudioComp() };
-    public static readonly VvvvComponentEnum Notui = new() { Value = nameof(Notui), Component = new NotuiComp() };
-    public static readonly VvvvComponentEnum Notuiv = new() { Value = nameof(Notuiv), Component = new NotuivComp() };
+    public static readonly VvvvComponentEnum DX11 = new VvvvComponentEnum<DX11Comp>() { Value = nameof(DX11) };
+    public static readonly VvvvComponentEnum MdStdl = new VvvvComponentEnum<MdStdlComp>() { Value = nameof(MdStdl) };
+    public static readonly VvvvComponentEnum MpDX = new VvvvComponentEnum<MpDXComp>() { Value = nameof(MpDX) };
+    public static readonly VvvvComponentEnum MpEssentials = new VvvvComponentEnum<MpEssentialsComp>() { Value = nameof(MpEssentials) };
+    public static readonly VvvvComponentEnum MpFxh = new VvvvComponentEnum<MpFxhComp>() { Value = nameof(MpFxh) };
+    public static readonly VvvvComponentEnum MpPddn = new VvvvComponentEnum<MpPddnComp>() { Value = nameof(MpPddn) };
+    public static readonly VvvvComponentEnum MpVAudio = new VvvvComponentEnum<MpVAudioComp>() { Value = nameof(MpVAudio) };
+    public static readonly VvvvComponentEnum Notui = new VvvvComponentEnum<NotuiComp>() { Value = nameof(Notui) };
+    public static readonly VvvvComponentEnum Notuiv = new VvvvComponentEnum<NotuivComp>() { Value = nameof(Notuiv) };
 
     public static implicit operator string(VvvvComponentEnum configuration)
     {
@@ -32,5 +32,11 @@ public class VvvvComponentEnum : Enumeration
         .Where(f => f.FieldType.Equals(typeof(VvvvComponentEnum)))
         .Select(f => f.GetValue(null) as VvvvComponentEnum);
 
-    public VvvvComponent Component { init; get; }
+    public abstract VvvvComponent Component { get; }
+}
+
+public class VvvvComponentEnum<T> : VvvvComponentEnum where T : VvvvComponent, new()
+{
+    private VvvvComponent _component = null;
+    public override VvvvComponent Component => _component ??= new T();
 }

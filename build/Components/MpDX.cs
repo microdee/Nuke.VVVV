@@ -43,7 +43,7 @@ public class MpDXComp : VvvvComponent
     {
         Build.CreateSymlinkOrCopy(
             build.VvvvPath / "packs" / "mp.dx",
-            Build.RootDirectory / "src" / "mp.dx" / "deploy" / "mp.dx"
+            Build.RootDirectory / "src" / "mp.dx" / "output" / "mp.dx"
         );
     }
 }

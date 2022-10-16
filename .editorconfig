@@ -1,0 +1,9 @@
+[/src/**]
+generated_code = true
+dotnet_analyzer_diagnostic.severity = none
+dotnet_diagnostic.CS3021.severity = none
+
+[/vvvv/**]
+generated_code = true
+dotnet_analyzer_diagnostic.severity = none
+dotnet_diagnostic.CS3021.severity = none

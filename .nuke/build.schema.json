@@ -68,6 +68,9 @@
           "type": "string",
           "description": "Partition to use on CI"
         },
+        "Patch": {
+          "type": "string"
+        },
         "Plan": {
           "type": "boolean",
           "description": "Shows the execution plan (HTML)"
@@ -93,7 +96,8 @@
               "Compile",
               "Init",
               "Install",
-              "Restore"
+              "Restore",
+              "VVVV"
             ]
           }
         },
@@ -107,7 +111,8 @@
               "Compile",
               "Init",
               "Install",
-              "Restore"
+              "Restore",
+              "VVVV"
             ]
           }
         },
